@@ -1,0 +1,18 @@
+adjust-cursor-thickness = 1
+background-opacity = 0.9
+confirm-close-surface = false
+cursor-style = block
+cursor-style-blink = false
+
+font-family = CaskaydiaCove Nerd Font
+font-size = 15
+font-style = Regular
+resize-overlay = never
+shell-integration-features = no-cursor
+theme = Catppuccin Mocha
+title = 
+
+window-decoration = false
+window-padding-balance = true
+window-padding-x = 3
+window-padding-y = 3

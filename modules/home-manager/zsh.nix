@@ -13,6 +13,11 @@
     fzf
     btop
     starship
+    fzf
+    fd
+    tmux
+    curl
+    eza
   ];
 
   programs.fzf = {
@@ -55,19 +60,42 @@
       share = true;
     };
     shellAliases = {
+      # common
       dc = "docker-compose";
       rm = "rm -i";
       k = "kubectl";
       v = "nvim";
+
+      # fzf
       f = "fzf";
-      fp = "fzf --preview='bat --color=always {}'";
+      fp = "fzf --preview='bat --style=numbers --color=always {}'";
       fv = "nvim $(fzf -m --preview='bat --color=always {}')";
-      gcof = "git fetch && git checkout $(git branch | fzf | sed 's/^..//')";
+
+      # lazy
+      lg = "lazygit";
       lzd = "lazydocker";
-      slzd = "sudo lazydocker";
+      oo = "nvim ~/vaults/personal/Start.md";
+
+      # Eza
+      ls = "eza -lh --group-directories-first --icons=auto";
+      lt = "eza --tree --level=2 --long --icons --git";
+
+      # Others
+      c = "clear";
+      ex = "exit";
+      cd = "zd";
     };
     initContent = ''
       eval "$(starship init zsh)"
+      zd() {
+        if [ $# -eq 0 ]; then
+          builtin cd ~ && return
+        elif [ -d "$1" ]; then
+          builtin cd "$1"
+        else
+          z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+        fi
+      }
     '';
   };
 }

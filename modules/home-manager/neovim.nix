@@ -7,9 +7,8 @@
     ripgrep
     fd
     fzf
+    gcc
 
-    # Needed for lazy.nvim
-    nodejs
   ];
 
   programs.neovim = {
@@ -33,6 +32,5 @@
     source = config.lib.file.mkOutOfStoreSymlink "/home/npham_mantu/nix/dotfiles/nvim";
     recursive = true;
   };
-	
 }
 

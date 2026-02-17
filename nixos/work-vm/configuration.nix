@@ -25,11 +25,15 @@
     ];
   };
   services.displayManager.ly.enable = true;
+  services.displayManager.defaultSession = "none+i3";
   services.xserver = {
     enable = true;
-    windowManager.qtile.enable = true;
+    windowManager.i3.enable = true;
     autoRepeatDelay = 200;
     autoRepeatInterval = 35;
+    displayManager.sessionCommands = ''
+      xwallpaper --zoom ~/nix/modules/bg/nix-waifu.png
+    '';
   };
 
   powerManagement.cpuFreqGovernor = "performance";
@@ -59,6 +63,7 @@
   virtualisation.vmware.guest.enable = true;
   virtualisation.vmware.guest.headless = false;
 
+
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     vim 
@@ -73,12 +78,20 @@
     pcmanfm
     rofi
     ghostty
+    xwallpaper
   ];
 
   services.openssh.enable = true;
 
+  services.picom = {
+    enable = true;
+    backend = "glx";
+    fade = false;
+  };
+
   fonts.packages = with pkgs; [
-    jetbrains-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.caskaydia-cove
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

@@ -26,6 +26,7 @@ return {
             configurationSection = { 'html', 'css', 'javascript', 'razor' },
           },
         },
+        lua_ls = {},
         cssls = {},
         yamlls = {
           settings = {

@@ -3,25 +3,21 @@
 {
   imports = [
     ./../../modules/home-manager/default.nix
+    ./../../modules/home-manager/alacritty.nix
+    ./langs.nix
   ];
   home.username = "npham_mantu";
   home.homeDirectory = "/home/npham_mantu";
   home.stateVersion = "25.11";
   home.packages = with pkgs; [
-    ripgrep
-    nil
-    nixpkgs-fmt
-    nodejs
-    gcc
-    curl
-    fd
+    neofetch
     lazygit
-    fzf
-    tmux
     ghostty
+    alacritty
     tree-sitter
     zip
     unzip
+    yazi
   ];
 
   programs.git = {
@@ -33,11 +29,6 @@
       };
       init.defaultBranch = "main";
     };
-  };
-
-  xdg.configFile."qtile" = {
-    source = config.lib.file.mkOutOfStoreSymlink "/home/npham_mantu/nix/dotfiles/qtile";
-    recursive = true;
   };
 
 }
