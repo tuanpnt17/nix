@@ -22,7 +22,13 @@
     openjdk17 # Java JDK
 
     # Dotnet
-    dotnet-sdk
+    (
+      with dotnetCorePackages;
+      combinePackages [
+        sdk_8_0
+        sdk_10_0
+      ]
+    )
     csharpier
     dotnet-ef
   ];
